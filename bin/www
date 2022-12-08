@@ -5,9 +5,9 @@
  */
 
 // express setup is in `app`:
-var app = require("../app");
-var debug = require("debug")("sequelieze-study:server");
-var http = require("http");
+var app = require("../app"),
+	debug = require("debug")("sequelieze-study:server"),
+	http = require("http");
 
 /**
  * Get port from environment and store in Express.
