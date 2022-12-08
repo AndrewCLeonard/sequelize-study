@@ -4,24 +4,21 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
-var indexRouter = require("./routes/index");
-var usersRouter = require("./routes/users");
-
 var app = express();
 
 /**
  * connect hbs as template engine
  */
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.join(__dirname, "views")); // TODO: may need to move this into `public` folder
 app.set("view engine", "hbs");
 
-app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(logger("dev")); // ??
+app.use(express.json()); // ??
+app.use(express.urlencoded({ extended: false })); // ??
 
 /**
  * https://www.npmjs.com/package/cookie-parser
- * parse `Cookie` headerand populate `req.cookies` with an object keyed by the cookie names
+ * parse `Cookie` header and populate `req.cookies` with an object keyed by the cookie names
  */
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
@@ -34,12 +31,10 @@ app.get("/", function (req, res) {
 	console.log("Signed Cookies: ", req.signedCookies);
 });
 
-/** 
- * Move this into controllers section? 
+/**
+ * connect app to controller
  */
-
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.use(require("./controllers/"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
