@@ -20,6 +20,10 @@ app.set("port", port);
  * Create HTTP server.
  */
 
+/**
+ * https://expressjs.com/en/guide/migrating-4.html#other-changes
+ * The http module is no longer needed, unless you need to directly work with it (socket.io/SPDY/HTTPS). The app can be started by using the app.listen() function.
+ */
 var server = http.createServer(app);
 
 /**
@@ -27,8 +31,11 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+// app.listen(port);
 server.on("error", onError);
+// app.on("error", onError);
 server.on("listening", onListening);
+// app.on("listening", onListening);
 
 /**
  * Normalize a port into a number, string, or false.
