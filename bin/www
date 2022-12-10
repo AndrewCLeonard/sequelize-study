@@ -23,6 +23,9 @@ app.set("port", port);
 /**
  * https://expressjs.com/en/guide/migrating-4.html#other-changes
  * The http module is no longer needed, unless you need to directly work with it (socket.io/SPDY/HTTPS). The app can be started by using the app.listen() function.
+ * 
+ * https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x#expresscreateserver
+ * express.createServer() Long deprecated. Just create new apps with express().
  */
 var server = http.createServer(app);
 

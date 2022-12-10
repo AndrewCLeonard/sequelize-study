@@ -23,13 +23,13 @@ app.use(express.urlencoded({ extended: false })); // ??
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", function (req, res) {
+// app.get("/", function (req, res) {
 // 	// Cookies that have not been signed
 // 	console.log("Cookies: ", req.cookies);
 
 // 	// Cookies that have been signed
 // 	console.log("Signed Cookies: ", req.signedCookies);
-});
+// });
 
 /**
  * connect app to controller
