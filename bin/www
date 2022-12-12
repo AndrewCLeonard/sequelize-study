@@ -21,24 +21,26 @@ app.set("port", port);
  */
 
 /**
+ * DEPRECATED CODE IN EXPRESS GENERATOR. WHY?!?!?
  * https://expressjs.com/en/guide/migrating-4.html#other-changes
  * The http module is no longer needed, unless you need to directly work with it (socket.io/SPDY/HTTPS). The app can be started by using the app.listen() function.
  * 
  * https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x#expresscreateserver
  * express.createServer() Long deprecated. Just create new apps with express().
  */
-var server = http.createServer(app);
+// var server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-// app.listen(port);
-server.on("error", onError);
-// app.on("error", onError);
-server.on("listening", onListening);
-// app.on("listening", onListening);
+// server.listen(port);
+// server.on("error", onError);
+// server.on("listening", onListening);
+
+app.listen(port);
+app.on("error", onError);
+app.on("listening", onListening);
 
 /**
  * Normalize a port into a number, string, or false.
