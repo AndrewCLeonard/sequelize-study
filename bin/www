@@ -6,8 +6,8 @@
 
 // express setup is in `app`:
 var app = require("../app"),
-	debug = require("debug")("sequelieze-study:server"),
-	http = require("http");
+	debug = require("debug")("sequelieze-study:server");
+// http = require("http"); // deprecated
 
 /**
  * Get port from environment and store in Express.
@@ -21,12 +21,12 @@ app.set("port", port);
  */
 
 /**
- * DEPRECATED CODE IN EXPRESS GENERATOR. WHY?!?!?
+ * DEPRECATED CODE USED IN EXPRESS GENERATOR: `var server = http.createServer(app);`
  * https://expressjs.com/en/guide/migrating-4.html#other-changes
- * The http module is no longer needed, unless you need to directly work with it (socket.io/SPDY/HTTPS). The app can be started by using the app.listen() function.
- * 
+ * "The http module is no longer needed, unless you need to directly work with it (socket.io/SPDY/HTTPS). The app can be started by using the app.listen() function."
+ *
  * https://github.com/expressjs/express/wiki/Migrating-from-3.x-to-4.x#expresscreateserver
- * express.createServer() Long deprecated. Just create new apps with express().
+ * "express.createServer() Long deprecated. Just create new apps with express()."
  */
 // var server = http.createServer(app);
 
