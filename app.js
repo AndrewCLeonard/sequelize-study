@@ -59,6 +59,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 /**
  * connect app to controller
+ * you don't have to specify index.js in the path (e.g., ./routes/apiRoutes/index.js). If the directory has an index.js file in it, Node.js will automatically look for it when requiring the directory.
  */
 app.use(require("./controllers/"));
 
