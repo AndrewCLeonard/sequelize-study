@@ -9,6 +9,8 @@ var app = require("../app"),
 	debug = require("debug")("sequelieze-study:server");
 // http = require("http"); // deprecated
 
+const sequelize = require("../config/connection");
+
 /**
  * Get port from environment and store in Express.
  */
@@ -38,7 +40,10 @@ app.set("port", port);
 // server.on("error", onError);
 // server.on("listening", onListening);
 
-app.listen(port);
+// app.listen(port);
+sequelize.sync({ force: false }).then(() => {
+	app.listen(PORT, () => console.log("Now listening"));
+});
 app.on("error", onError);
 app.on("listening", onListening);
 

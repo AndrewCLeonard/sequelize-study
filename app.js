@@ -6,6 +6,8 @@ var logger = require("morgan");
 
 var app = express();
 
+const sequelize = require("./config/connection");
+
 /**
  * connect hbs as template engine
  */
