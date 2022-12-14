@@ -4,7 +4,7 @@ const { Model, DataTypes } = require("sequelize");
 class Comment extends Model {}
 
 Comment.init({
-	id: {
+	commentId: {
 		type: DataTypes.INTEGER,
 		autoIncrement: true,
 		primaryKey: true,
@@ -16,4 +16,11 @@ Comment.init({
 			len: [1],
 		},
 	},
+	sequelize,
+	timestamps: false,
+	freezeTableName: true,
+	underscored: true,
+	modelName: "comment",
 });
+
+module.exports = Comment
