@@ -42,7 +42,7 @@ app.set("port", port);
 
 // app.listen(port);
 sequelize.sync({ force: false }).then(() => {
-	app.listen(port, () => console.log(`Now Listening on ${port}`));
+app.listen(port, () => console.log(`Now Listening on ${port}`));
 });
 app.on("error", onError);
 app.on("listening", onListening);
