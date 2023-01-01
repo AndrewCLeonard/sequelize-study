@@ -9,9 +9,16 @@ const User = require("./User");
 
 // User Post
 User.hasMany(Post, {
-	foreignKey: "postId",
+	foreignKey: "post_id",
 });
-Post.belongsTo(User);
+
+Post.belongsTo(
+	User
+	// , {
+	// foreignKey: "user_id",
+	// onDelete: "SET NULL",
+	// }
+);
 
 // User Comment
 User.hasMany(Comment, {
