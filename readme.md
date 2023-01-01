@@ -26,3 +26,54 @@ https://miro.com/app/board/uXjVP8-oTIY=/?share_link_id=347451481228
 -   develop = for testing
 -   template/\* = boilerplate for use and/or study
 -   feature/\* = functionality
+
+## Error Messages and Solutions
+
+### ECONNREFUSED
+
+```
+/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/dialects/mysql/connection-manager.js:92
+          throw new SequelizeErrors.ConnectionRefusedError(err);
+                ^
+
+ConnectionRefusedError [SequelizeConnectionRefusedError]: connect ECONNREFUSED ::1:3300
+    at ConnectionManager.connect (/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/dialects/mysql/connection-manager.js:92:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async ConnectionManager._connect (/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:220:24)
+    at async /Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:174:32
+    at async ConnectionManager.getConnection (/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/dialects/abstract/connection-manager.js:197:7)
+    at async /Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/sequelize.js:304:26
+    at async Sequelize.authenticate (/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/sequelize.js:456:5)
+    at async Sequelize.sync (/Users/andrewleonard/codingBootcamp/sequelize-study/node_modules/sequelize/lib/sequelize.js:368:7) {
+  parent: Error: connect ECONNREFUSED ::1:3300
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1300:16) {
+    errno: -61,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '::1',
+    port: 3300,
+    fatal: true
+  },
+  original: Error: connect ECONNREFUSED ::1:3300
+      at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1300:16) {
+    errno: -61,
+    code: 'ECONNREFUSED',
+    syscall: 'connect',
+    address: '::1',
+    port: 3300,
+    fatal: true
+  }
+}
+
+Node.js v18.12.1
+```
+
+This code from `bin/www` causes the crash:
+
+```
+sequelize.sync({ force: false }).then(() => {
+	app.listen(port, () => console.log(`Now Listening on ${port}`));
+});
+```
+
+-   `await` must be used inside an `async` function
